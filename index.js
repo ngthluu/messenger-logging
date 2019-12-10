@@ -43,14 +43,11 @@ login(credentials, async (err, api) => {
     // Loop
     while (true){
 
-        threadID = await mainScript.getMostRecentThread(api);
+        let threadID = await mainScript.getMostRecentThread(api);
 
         // Create a thread node if it's not exist
         if (messageHistory[threadID] === undefined){
-            messageHistory[threadID] = {
-                'ThreadID': threadID,
-                'Message': []
-            };
+            messageHistory[threadID] = [];
         }
             
         // Get member name list
@@ -62,8 +59,8 @@ login(credentials, async (err, api) => {
         // Get most recent message
         let message = await mainScript.getMostRecentMessages(api, threadID);
 
-        if (messageHistory[threadID].Message.length == 0 || !mainScript.isMessageInBox(message, messageHistory[threadID].Message)){
-            messageHistory[threadID].Message.push({
+        if (messageHistory[threadID].length == 0 || !mainScript.isMessageInBox(message, messageHistory[threadID])){
+            messageHistory[threadID].push({
                 'Username': memberNameList[message.senderID],
                 'UserID': message.senderID,
                 'Message': message.body,
