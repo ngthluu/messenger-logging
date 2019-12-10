@@ -1,0 +1,14 @@
+{
+  "name": "savemessenger",
+  "version": "1.0.0",
+  "description": "Nothing special",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ntl",
+  "license": "MIT",
+  "dependencies": {
+    "facebook-chat-api": "^1.6.1"
+  }
+}
